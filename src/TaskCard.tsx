@@ -1,14 +1,5 @@
 import { Draggable } from '@hello-pangea/dnd'
-
-// Define the shape of a Task object
-interface Task {
-  id: string
-  title: string
-  description?: string
-  priority?: 'low' | 'normal' | 'high'
-  due_date?: string
-  status: string
-}
+import { Task } from './types'
 
 interface TaskCardProps {
   task: Task
@@ -22,6 +13,7 @@ function TaskCard({ task, index }: TaskCardProps) {
     <Draggable draggableId={task.id} index={index}>
       {(provided) => (
         <div
+          // JavaScript object that holds a reference to the DOM element.
           ref={provided.innerRef}
           {...provided.draggableProps}    // handles drag positioning
           {...provided.dragHandleProps}   // handles the click-and-drag gesture
